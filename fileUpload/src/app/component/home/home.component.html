@@ -1,0 +1,32 @@
+<p>home works!</p>
+<div style="margin: 20px;">
+<div class="upload-area"
+(dragover)="onDragOver($event)"
+(dragleave)="onDragLeave($event)"
+(drop)="onDrop($event)" >
+<p>Drag and drop files here or click to select files</p>
+<input type="file" (change)="onFilesSelected($event)" multiple hidden #fileInput />
+<button (click)="fileInput.click()">Select Files</button>
+</div>
+<table *ngIf="files.length > 0" border="1">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Size (bytes)</th>
+        <th>Type</th>
+        <!-- <th>Content</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let file of files">
+        <td>{{ file.name }}</td>
+        <td>{{ file.size }}</td>
+        <td>{{ file.type }}</td>
+        <!-- <td><pre>{{ file.content }}</pre></td> -->
+      </tr>
+    </tbody>
+  </table>
+  <button (click)="submit()" [disabled]="files.length == 0">Submit</button>
+
+  </div>
+  
